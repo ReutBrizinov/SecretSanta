@@ -3,15 +3,14 @@ import random
 from twilio.rest import Client
 
 
-MESSAGING_SERVICE_SID='XXXXXXXXXX'
-ACCOUNT_SID = 'XXXXXXXXXXXX'
-AUTH_TOKEN = 'XXXXXXXXXXXX'
-SMS_PHONE = '+10000000000'
+ACCOUNT_SID = 'XXXXXXXXXX'
+AUTH_TOKEN = 'YYYYYYYYYYYYY'
+SMS_PHONE = '+123456789'
+
 SMS_BODY = """Hello {}!
 We are delighted to invite you to the annual Hanukkah-Christmas!
-Please note that you are the dwarf of {}. 
+Please note that you are the dwarf of {}.
 Shhh.. keep it secret!"""
-
 
 ##########################################
 # XOR using given key (encrypt or decrypt)
@@ -34,7 +33,8 @@ class MemberInfo:
     def send_sms(self):
         twillo_client = Client(ACCOUNT_SID, AUTH_TOKEN)
         body = SMS_BODY.format(self.name, self.giant.name)
-        message = twillo_client.messages.create(body=body, to="+"+self.phone_number, messaging_service_sid=MESSAGING_SERVICE_SID)
+        message = twillo_client.messages.create(body=body, to="+" + self.phone_number, from_=SMS_PHONE)
+
 
     def __str__(self):
         return "{}: {} --> {}".format(self.name, self.phone_number, self.giant.name)
