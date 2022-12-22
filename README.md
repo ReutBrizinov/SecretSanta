@@ -8,6 +8,7 @@ I'm using Twilio API to send the SMS.
 
 ## Example Command Line
 - Change `ACCOUNT_SID`, `AUTH_TOKEN`, `SMS_PHONE`
+
 `python.exe secret_santa.py path_to_db path_to_output_file`
 
 ## Demo
